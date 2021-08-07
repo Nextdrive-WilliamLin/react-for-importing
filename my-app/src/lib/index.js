@@ -1,3 +1,4 @@
 import TextInput from "./TextInput";
+import MoButton from "./MoButton";
 
-export { TextInput };
+export { TextInput, MoButton };

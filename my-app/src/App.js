@@ -1,5 +1,5 @@
 import React from "react";
-import MoButton from "./lib/MoButton";
+import MoButton from "components-modules/dist";
 
 function App (){
   return  (
