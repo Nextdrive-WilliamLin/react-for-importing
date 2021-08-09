@@ -1,4 +1,4 @@
-import TextInput from "./TextInput";
 import MoButton from "./MoButton";
+import MoAccordions from "./MoAccordion";
 
-export { TextInput, MoButton };
+export { MoButton, MoAccordions };

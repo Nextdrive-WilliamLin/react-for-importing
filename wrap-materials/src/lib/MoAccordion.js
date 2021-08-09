@@ -61,15 +61,15 @@ export default function MoAccordions({data}) {
     const willReturn = data.map((item, index)=>{
         return (
             <Accordion square key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
-            <AccordionSummary>
-                <Typography>Collapsible Group Item #{index}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-                <Typography>
-                    {item.content}
-                </Typography>
-            </AccordionDetails>
-        </Accordion>)
+                <AccordionSummary>
+                    <Typography>Collapsible Group Item #{index}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        {item.content}
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>)
     })
 
     return (
