@@ -20,9 +20,7 @@ function App (){
 
   return  (
       <div>
-          <React.StrictMode ignore>
-              <MoAccordion data={accordionData}></MoAccordion>
-          </React.StrictMode>
+          <MoAccordion data={accordionData}></MoAccordion>
       </div>
   )
 }
