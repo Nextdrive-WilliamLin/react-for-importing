@@ -1,11 +1,9 @@
 import React from 'react';
-
-import { Button } from './Button';
 import {MoButton} from "../lib"
 
 export default {
   title: 'Example/Button',
-  component: Button,
+  component: MoButton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
@@ -13,8 +11,8 @@ export default {
 
 const Template = (args) => <MoButton {...args} >aa</MoButton>;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Overview = Template.bind({});
+Overview.args = {
   primary: true,
   label: 'Button',
 };
