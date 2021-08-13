@@ -16,13 +16,14 @@ const styles = {
 };
 
 function MoButton(props) {
-    const { classes, label } = props;
-    return <Button className={classes.root}>{label}</Button>;
+    const { classes, label, click } = props;
+    return <Button className={classes.root} onClick={click}>{label}</Button>;
 }
 
 MoButton.propTypes = {
     classes: PropTypes.object.isRequired,
-    label: PropTypes.string
+    label: PropTypes.string,
+    click: PropTypes.func
 };
 
 export default withStyles(styles)(MoButton);
