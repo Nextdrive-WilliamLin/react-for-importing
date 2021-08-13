@@ -15,7 +15,8 @@ const useStyles = makeStyles((aa)=>{
     console.log("check", aa)
     return {
         root: {
-            backgroundColor: props => props.headerBgColor
+            backgroundColor: props => props.headerBgColor,
+            color: "#fff"
         },
         expanded: {
             backgroundColor: props => props.expandedHeaderBgColor
@@ -61,7 +62,7 @@ export default function MoAccordions({data, headerBgColor, expandedHeaderBgColor
                         expanded: classes.expanded
                     }}
                 >
-                    <Typography>Collapsible Gssroup Item #{index}</Typography>
+                    <Typography>Header #{index}</Typography>
                 </MuiAccordionSummary>
                 <AccordionDetails>
                     <Typography>

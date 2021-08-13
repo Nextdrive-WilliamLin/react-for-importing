@@ -14,5 +14,5 @@ const Template = (args) => <MoButton {...args} >aa</MoButton>;
 export const Overview = Template.bind({});
 Overview.args = {
   primary: true,
-  label: 'Button',
+  label: 'Button'
 };
