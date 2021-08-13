@@ -28,4 +28,6 @@ const Template = (args) => <MoAccordions {...args} >aa</MoAccordions>;
 export const Overview = Template.bind({});
 Overview.args = {
   data: accordionData,
+  headerBgColor: "#d85454",
+  expandedHeaderBgColor: "#4ea8ff"
 };

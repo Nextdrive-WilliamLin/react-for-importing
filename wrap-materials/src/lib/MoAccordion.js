@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
@@ -7,9 +7,18 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 
 MoAccordions.prototype = {
-    data: PropTypes.array
+    data: PropTypes.array,
+    headerBgColor: PropTypes.string,
+    expandedHeaderBgColor: PropTypes.string
 }
-
+const useStyles = makeStyles({
+    root: {
+        backgroundColor: props => props.headerBgColor
+    },
+    expanded: {
+        backgroundColor: props => props.expandedHeaderBgColor
+    }
+});
 const Accordion = withStyles({
     root: {
         border: '1px solid rgba(0, 0, 0, .125)',
@@ -27,33 +36,15 @@ const Accordion = withStyles({
     expanded: {},
 })(MuiAccordion);
 
-const AccordionSummary = withStyles({
-    root: {
-        backgroundColor: 'rgba(0, 0, 0, .03)',
-        borderBottom: '1px solid rgba(0, 0, 0, .125)',
-        marginBottom: -1,
-        minHeight: 56,
-        '&$expanded': {
-            minHeight: 56,
-        },
-    },
-    content: {
-        '&$expanded': {
-            margin: '12px 0',
-        },
-    },
-    expanded: {},
-})(MuiAccordionSummary);
-
 const AccordionDetails = withStyles((theme) => ({
     root: {
         padding: theme.spacing(2),
     },
 }))(MuiAccordionDetails);
 
-export default function MoAccordions({data}) {
+export default function MoAccordions({data, headerBgColor, expandedHeaderBgColor}) {
     const [expanded, setExpanded] = React.useState('panel1');
-
+    const classes = useStyles({ headerBgColor, expandedHeaderBgColor });
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
@@ -61,16 +52,21 @@ export default function MoAccordions({data}) {
     const willReturn = data.map((item, index)=>{
         return (
             <Accordion square key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
-            <AccordionSummary>
-                <Typography>Collapsible Group Item #{index}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-                <Typography>
-                    {item.content}
-                </Typography>
-            </AccordionDetails>
-        </Accordion>)
-    })
+                <MuiAccordionSummary
+                    classes={{
+                        root: classes.root,
+                        expanded: classes.expanded
+                    }}
+                >
+                    <Typography>Collapsible Gssroup Item #{index}</Typography>
+                </MuiAccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        ss
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+        )})
 
     return (
         <div>
