@@ -11,12 +11,15 @@ MoAccordions.prototype = {
     headerBgColor: PropTypes.string,
     expandedHeaderBgColor: PropTypes.string
 }
-const useStyles = makeStyles({
-    root: {
-        backgroundColor: props => props.headerBgColor
-    },
-    expanded: {
-        backgroundColor: props => props.expandedHeaderBgColor
+const useStyles = makeStyles((aa)=>{
+    console.log("check", aa)
+    return {
+        root: {
+            backgroundColor: props => props.headerBgColor
+        },
+        expanded: {
+            backgroundColor: props => props.expandedHeaderBgColor
+        }
     }
 });
 const Accordion = withStyles({
