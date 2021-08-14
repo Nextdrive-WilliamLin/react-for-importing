@@ -15,9 +15,13 @@ const Template = (args) => {
     const handleClick = () => {
         setOpen(true)
     }
+    const handleClose = () => {
+        setOpen(false)
+    }
     return (
         <div>
             <MoButton label="open" click={handleClick}></MoButton>
+            <MoButton label="open" click={handleClose}></MoButton>
             <MoSnackBar {...args} show={open}></MoSnackBar>
         </div>
     )
