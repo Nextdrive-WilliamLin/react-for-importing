@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { MoSnackBar, MoButton} from "../lib"
 
 export default {
@@ -9,9 +9,19 @@ export default {
     },
 };
 
-const Template = (args) => <div>
-    <MoSnackBar {...args} >aa</MoSnackBar>
-</div>;
+
+const Template = (args) => {
+    const [open, setOpen] = React.useState(false);
+    const handleClick = () => {
+        setOpen(true)
+    }
+    return (
+        <div>
+            <MoButton label="open" click={handleClick}></MoButton>
+            <MoSnackBar {...args} show={open}></MoSnackBar>
+        </div>
+    )
+}
 
 export const Overview = Template.bind({});
 Overview.args = {

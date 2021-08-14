@@ -1,26 +1,24 @@
-import React from "react";
-import MoButton from "components-modules/dist/MoButton";
-import MoAccordion from "./lib/MoAccordion";
+import React, {useState} from "react";
+import MoButton from "./lib/MoButton";
+import MoSnackBar from "./lib/MoSnackBar";
 
-function App (){
-
-    const accordionData = [{
-        title: "a",
-        content: <MoButton color="primary">AAAAAAAA</MoButton>
-    },
-        {
-            title: "b",
-            content: <MoButton color="primary">BBBBBB</MoButton>
-        },
-        {
-            title: "c",
-            content: <MoButton color="primary">CCCCCCC</MoButton>
-        }
-        ]
-
+function App () {
+    const [state, setState] = useState(1);
+    const [show, setShow] = useState(false);
+    const handleClick = () => {
+        setState(state => state + 1)
+        setShow(true)
+    }
+    const handleClose = () => {
+        setState(state => state + 1)
+        setShow(false)
+    }
   return  (
       <div>
-          <MoAccordion data={accordionData}></MoAccordion>
+          <span>Counter: {state}</span>
+          <MoButton click={handleClick} label="open"></MoButton>
+          <MoButton click={handleClose} label="close"></MoButton>
+          <MoSnackBar position="right" show={show}></MoSnackBar>
       </div>
   )
 }

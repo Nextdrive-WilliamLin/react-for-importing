@@ -5,13 +5,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import MoButton from "./MoButton";
 
-export default function MoSnackBar({position}) {
+export default function MoSnackBar({position, show}) {
     const [open, setOpen] = React.useState(false);
-
-    const handleClick = () => {
-        console.log("open")
-        setOpen(true);
-    };
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -23,13 +18,13 @@ export default function MoSnackBar({position}) {
 
     return (
         <div>
-            <MoButton click={handleClick} label="Open">Open simple snackbar</MoButton>
+            <div>sdsds{show}</div>
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: position,
                 }}
-                open={open}
+                open={show}
                 autoHideDuration={6000}
                 onClose={handleClose}
                 message="Note archived"
