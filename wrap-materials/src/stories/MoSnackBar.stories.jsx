@@ -21,7 +21,7 @@ const Template = (args) => {
     return (
         <div>
             <MoButton label="open" click={handleClick}></MoButton>
-            <MoButton label="open" click={handleClose}></MoButton>
+            <MoButton label="close" click={handleClose}></MoButton>
             <MoSnackBar {...args} show={open}></MoSnackBar>
         </div>
     )
