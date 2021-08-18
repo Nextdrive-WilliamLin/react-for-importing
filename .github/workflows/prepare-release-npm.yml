@@ -1,0 +1,38 @@
+name: Prepare release NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'publish version'
+        required: true
+      base:
+        description: 'base version'
+        required: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set env
+        run: |
+          NPM_PACKAGE=$(echo ${{ github.event.inputs.version }} | cut -d'@' -f 1)
+          echo "RELEASE_PACKAGE=$NPM_PACKAGE" >> $GITHUB_ENV
+      - name: Create release and Generate release note
+        uses: nextDriveIoE/release-note-generator-action@master
+        with:
+          github_token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+          jira_url: 'https://nextdrive.atlassian.net'
+          jira_project: 'EC,AT,EIS,IOE,RD,AP'
+          jira_user: ${{ secrets.JIRA_USER }}
+          jira_token: ${{ secrets.JIRA_TOKEN }}
+          base_version: ${{ github.event.inputs.base }}
+          current_version: ${{ github.event.inputs.version }}
+          github_label: ${{ env.RELEASE_PACKAGE }}
