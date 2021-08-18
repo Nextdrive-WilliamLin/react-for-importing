@@ -3,12 +3,14 @@ name: Prepare release NPM
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'publish version'
+      name:
+        description: 'Person to greet'
         required: true
-      base:
-        description: 'base version'
-        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 
 jobs:
   build:
@@ -29,10 +31,6 @@ jobs:
         uses: nextDriveIoE/release-note-generator-action@master
         with:
           github_token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
-          jira_url: 'https://nextdrive.atlassian.net'
-          jira_project: 'EC,AT,EIS,IOE,RD,AP'
-          jira_user: ${{ secrets.JIRA_USER }}
-          jira_token: ${{ secrets.JIRA_TOKEN }}
           base_version: ${{ github.event.inputs.base }}
           current_version: ${{ github.event.inputs.version }}
           github_label: ${{ env.RELEASE_PACKAGE }}
