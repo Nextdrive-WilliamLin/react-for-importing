@@ -3,7 +3,7 @@ name: Publish NPM module to Github Packages
 on:
   push:
     tags:
-      - '**.*.*'
+      - '*.*.*'
 
 jobs:
   build:
