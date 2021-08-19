@@ -3,14 +3,12 @@ name: Prepare release NPM
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
+      version:
+        description: 'publish version'
         required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+      base:
+        description: 'base version'
+        required: true
 
 jobs:
   build:
@@ -33,4 +31,3 @@ jobs:
           github_token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
           base_version: ${{ github.event.inputs.base }}
           current_version: ${{ github.event.inputs.version }}
-          github_label: ${{ env.RELEASE_PACKAGE }}
