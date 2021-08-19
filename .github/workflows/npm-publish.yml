@@ -25,10 +25,10 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - name: run build
         run: |
+          NPM_VERSION=$(echo $RELEASE_VERSION | cut -d'@' -f 2)
           yarn
           yarn build
-          yarn version --no-git-tag-version --no-commit-hooks --new-version ${RELEASE_VERSION}
-      - name: Publish to github
-        uses: luvies/action-yarn-publish@v0.1.1
+          yarn version --no-git-tag-version --no-commit-hooks --new-version $NPM_VERSION
+          yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
