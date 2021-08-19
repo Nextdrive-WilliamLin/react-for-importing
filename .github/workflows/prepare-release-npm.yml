@@ -21,10 +21,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set env
-        run: |
-          NPM_PACKAGE=$(echo ${{ github.event.inputs.version }} | cut -d'@' -f 1)
-          echo "RELEASE_PACKAGE=$NPM_PACKAGE" >> $GITHUB_ENV
       - name: Create release and Generate release note
         uses: nextDriveIoE/release-note-generator-action@master
         with:
