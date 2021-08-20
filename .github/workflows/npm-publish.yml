@@ -25,11 +25,10 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - name: run build
         run: |
-          NPM_VERSION=$(echo $RELEASE_VERSION | cut -d'@' -f 2)
           cd wrap-materials/
           yarn
           yarn build
-          yarn version --no-git-tag-version --no-commit-hooks --new-version $NPM_VERSION
+          yarn version --no-git-tag-version --no-commit-hooks --new-version $RELEASE_VERSION
           yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
