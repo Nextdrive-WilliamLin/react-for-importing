@@ -23,13 +23,13 @@ jobs:
         with:
           always-auth: true
           node-version: ${{ matrix.node-version }}
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://registry.npmjs.org'
       - name: run build
         run: |
           cd wrap-materials/
           yarn
           yarn build
           yarn version --no-git-tag-version --no-commit-hooks --new-version $RELEASE_VERSION
-          npm publish --access public
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
