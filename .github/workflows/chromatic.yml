@@ -9,13 +9,14 @@ jobs:
   test:
     # Operating System
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: wrap-materials
     # Job steps
     steps:
       - uses: actions/checkout@v1
-      - name: yarn
-        run: |
-          cd wrap-materials/
-          yarn
+      - run: yarn
         #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
