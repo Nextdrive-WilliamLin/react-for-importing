@@ -9,7 +9,7 @@ export default function MoSnackBar({position, show, close}) {
 
     return (
         <div>
-            <div>cccccc{show}</div>
+            <div>ccccfffffcc{show}</div>
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
